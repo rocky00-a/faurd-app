@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamGuard - Protect Yourself from Scams & Fraud</title>
+    <meta name="description" content="Real-time scam alerts, community reporting, and comprehensive education to keep you safe from fraud">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>ScamGuard</h1>
+                </div>
+                
+                <nav class="nav desktop-nav">
+                    <a href="#alerts">Live Alerts</a>
+                    <a href="#protection">Protection</a>
+                    <a href="#education">Learn</a>
+                    <a href="#report">Report</a>
+                </nav>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <nav class="mobile-nav" id="mobileNav">
+                <a href="#alerts">Live Alerts</a>
+                <a href="#protection">Protection</a>
+                <a href="#education">Learn</a>
+                <a href="#report">Report</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="mr">मराठी</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="te">తెలుగు</option>
+                </select>
+            </div>
+            
+            <div class="hero-content">
+                <h1>Protect Yourself from Scams & Fraud</h1>
+                <p>Real-time alerts, community reporting, and comprehensive education to keep you safe from evolving threats</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('alerts')">View Live Alerts</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('report')">Report Suspicious Activity</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Live Monitoring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Scams Blocked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Detection Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Alerts Section -->
+    <section id="alerts" class="alerts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Scam Alerts</h2>
+                <p>Real-time warnings from our community</p>
+            </div>
+
+            <div class="alerts-container" id="alertsContainer">
+                <!-- Alerts will be dynamically generated here -->
+            </div>
+
+            <div class="section-footer">
+                <button class="btn btn-danger">View All Alerts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protection Tools Section -->
+    <section id="protection" class="protection-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Protection Tools</h2>
+                <p>Advanced tools to help you stay safe online</p>
+            </div>
+            
+            <div class="protection-grid">
+                <div class="protection-card">
+                    <div class="card-header">
+                        <i class="fas fa-link"></i>
+                        <h3>Link Safety Checker</h3>
+                    </div>
+                    <div class="card-body">
+                        <label>Enter URL to check:</label>
+                        <input type="url" id="linkInput" placeholder="https://example.com">
+                        <button class="btn btn-primary" onclick="checkLink()">Check Link Safety</button>
+                        <div id="linkResult" class="result-container"></div>
+                    </div>
+                </div>
+                
+                <div class="protection-tools">
+                    <div class="tool-card">
+                        <h3>Phone Number Checker</h3>
+                        <p>Check if a phone number has been reported for spam or fraud.</p>
+                        <input type="tel" id="phoneInput" placeholder="+91 XXXXX XXXXX">
+                        <button class="btn btn-blue" onclick="checkPhone()">Check Number</button>
+                        <div id="phoneResult" class="result-container"></div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3>Email Analyzer</h3>
+                        <p>Analyze emails for phishing indicators and suspicious content.</p>
+                        <button class="btn btn-yellow">Upload Email</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Scam Education Center</h2>
+                <p>Learn to identify and protect yourself from common scams</p>
+            </div>
+
+            <div class="education-tabs">
+                <button class="tab-btn active" onclick="showScamType('phone')">
+                    <i class="fas fa-phone"></i>
+                    Phone Call Scams
+                </button>
+                <button class="tab-btn" onclick="showScamType('email')">
+                    <i class="fas fa-envelope"></i>
+                    Email Phishing
+                </button>
+                <button class="tab-btn" onclick="showScamType('financial')">
+                    <i class="fas fa-credit-card"></i>
+                    Financial Fraud
+                </button>
+                <button class="tab-btn" onclick="showScamType('job')">
+                    <i class="fas fa-briefcase"></i>
+                    Employment Scams
+                </button>
+            </div>
+
+            <div class="education-content" id="educationContent">
+                <!-- Content will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Tips Section -->
+    <section class="security-tips">
+        <div class="container">
+            <div class="section-header">
+                <h2>Essential Security Tips</h2>
+                <p>Follow these guidelines to protect yourself online</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Strong Passwords</h3>
+                    <p>Use unique, complex passwords for all accounts and enable two-factor authentication.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Stay Vigilant</h3>
+                    <p>Always verify requests for personal information, even if they seem legitimate.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Secure Your Devices</h3>
+                    <p>Keep your devices updated and avoid downloading apps from unknown sources.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Report Suspicious Activity</h3>
+                    <p>Help protect others by reporting scams and suspicious activities immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Section -->
+    <section id="report" class="report-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Report Suspicious Activity</h2>
+                <p>Help protect the community by reporting scams and fraud</p>
+            </div>
+            
+            <div class="report-form-container">
+                <form id="reportForm" class="report-form" onsubmit="submitReport(event)">
+                    <div class="form-header">
+                        <i class="fas fa-flag"></i>
+                        <h3>Report Suspicious Activity</h3>
+                    </div>
+
+                    <div class="report-types">
+                        <label>Type of Scam/Fraud:</label>
+                        <div class="type-buttons">
+                            <button type="button" class="type-btn" data-type="phone">
+                                <i class="fas fa-phone"></i>
+                                Suspicious Phone Call
+                            </button>
+                            <button type="button" class="type-btn" data-type="sms">
+                                <i class="fas fa-comment"></i>
+                                Spam SMS/Message
+                            </button>
+                            <button type="button" class="type-btn" data-type="email">
+                                <i class="fas fa-envelope"></i>
+                                Phishing Email
+                            </button>
+                            <button type="button" class="type-btn" data-type="website">
+                                <i class="fas fa-link"></i>
+                                Fraudulent Website
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description of the scam:</label>
+                        <textarea id="description" required placeholder="Describe what happened, what they asked for, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Information (Phone/Email/Website):</label>
+                        <input type="text" id="contact" placeholder="Scammer's phone number, email, or website">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location (if applicable):</label>
+                        <input type="text" id="location" placeholder="City, State">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="evidence">Additional Evidence:</label>
+                        <textarea id="evidence" placeholder="Screenshots, message content, or other evidence"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-submit">Submit Report</button>
+                </form>
+
+                <div id="reportSuccess" class="success-message" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Report Submitted Successfully</h3>
+                    <p>Thank you for helping protect the community. Your report has been recorded and will be reviewed.</p>
+                    <button class="btn btn-primary" onclick="resetReportForm()">Submit Another Report</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>ScamGuard</h3>
+                    </div>
+                    <p>Protecting communities from fraud and scams through awareness, education, and real-time alerts.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#alerts">Live Alerts</a></li>
+                        <li><a href="#protection">Protection Tools</a></li>
+                        <li><a href="#education">Education Center</a></li>
+                        <li><a href="#report">Report Scam</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Fraud Types</a></li>
+                        <li><a href="#">Security Tips</a></li>
+                        <li><a href="#">What to Do If Scammed</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Emergency Contacts</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Cybercrime Helpline: 1930</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>report@cybercrime.gov.in</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Report online at cybercrime.gov.in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ScamGuard. All rights reserved. Stay safe, stay informed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
